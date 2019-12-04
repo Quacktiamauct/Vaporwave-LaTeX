@@ -1,0 +1,87 @@
+\ProvidesPackage{vaporwave}[2019/12/04]
+
+\RequirePackage{graphicx}
+
+\RequirePackage{xcolor}
+\pagecolor[rgb]{0.05,0.05,0.05}
+\color[rgb]{0.8,0.8,0.8}
+
+\RequirePackage{background}
+\backgroundsetup{
+scale=1,
+color=black,
+opacity=1.0,
+angle=0,
+contents={%
+  \includegraphics[width=\paperwidth,height=\paperheight]{vapor-bg.jpg}
+  }
+}
+
+\widowpenalty10000
+\clubpenalty10000
+
+\RequirePackage{geometry}
+\geometry{
+    left=35mm,
+    right=35mm,
+    headheight=40mm,
+    top=35mm,
+    bottom=55mm,
+    footskip=40mm
+}
+
+\definecolor{textbg}{RGB}{15,05,15}
+
+\RequirePackage[most]{tcolorbox}
+\RequirePackage{tikz}
+\tcbuselibrary{skins}
+\newenvironment{cool}[1]
+{
+\begin{tcolorbox}[
+colframe=textbg,
+opacityframe=0.7,
+colback=textbg,
+opacityback=0.7,
+coltext=white,
+enhanced,
+breakable,
+width=\dimexpr\textwidth+6mm\relax,
+enlarge left by=-6mm,
+title=\bfseries\large#1,
+% frame style={left color=Aquamarine,right color=Magenta}
+% WEIRD SHIT
+fonttitle=\bfseries,coltitle=white,attach boxed title to top center=
+{yshift=-0.25mm-\tcboxedtitleheight/2,yshifttext=2mm-\tcboxedtitleheight/2},
+boxed title style={boxrule=0.5mm,
+colback=textbg,
+opacityframe=0.7,
+frame code={
+\path[tcb fill frame] ([xshift=-4mm]frame.west)
+-- (frame.north west) -- (frame.north east) -- ([xshift=4mm]frame.east)
+-- (frame.south east) -- (frame.south west) -- cycle; },
+interior code={ \path[tcb fill interior] ([xshift=-2mm]interior.west)
+-- (interior.north west) -- (interior.north east)
+-- ([xshift=2mm]interior.east) -- (interior.south east) -- (interior.south west)
+-- cycle;
+}}
+% END OF WIERD SHIT
+]
+}
+{
+\end{tcolorbox}
+\marginpar{\includegraphics[width=0.8\marginparwidth]{img/vapor-palm2.png}}
+\reversemarginpar
+\marginpar{\includegraphics[width=0.8\marginparwidth]{img/vapor-palm1.png}}
+}
+
+
+\RequirePackage{fancyhdr}
+\renewcommand{\headrulewidth}{0.0pt}
+\renewcommand{\footrulewidth}{0.0pt}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[RO]{\includegraphics[height=3cm]{vapor-greek2}}
+\fancyfoot[LO]{\includegraphics[height=3cm]{vapor-greek1}}
+\fancyfoot[CO]{\includegraphics[height=30px]{vapor-footer}}
+
+\endinput
